@@ -1,4 +1,5 @@
 package com.example.ppro.model;
+
 import java.io.Serializable;
  
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ public class Zamestnanec implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	/*Jen zkouším GIT*/
 	
 	@Column(name = "jmeno")
 	private String jmeno;
