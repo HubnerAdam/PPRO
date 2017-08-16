@@ -22,8 +22,8 @@ public class Kurz implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Set<Zamestnanec> zamestnanci;
-	private Set<HromadnaZprava> hromadneZpravy;
+	//private Set<Zamestnanec> zamestnanci;
+	//private Set<HromadnaZprava> hromadneZpravy;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -34,15 +34,16 @@ public class Kurz implements Serializable{
 	@Column(name = "popisKurzu")
 	private String popisKurzu;	
 
-	java.util.Date dt = new java.util.Date();
+	/*java.util.Date dt = new java.util.Date();
 	java.text.SimpleDateFormat sdf = 
 	     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String currentTime = sdf.format(dt);
-	
+	*/
 	@Column(name = "cas")
 	private int cas;
 	
 	private Lektor lektor;
+	/*
 	@ManyToOne
     @JoinColumn(name = "idLektor")
     public Lektor getLektor() {
@@ -50,7 +51,8 @@ public class Kurz implements Serializable{
 	}
     public void setLektor(Lektor lektor) {
         this.lektor = lektor;
-    }
+    } 
+	
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "zamestnanec", joinColumns = @JoinColumn(name = "zamestnanec_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "kurz_id", referencedColumnName = "id"))
     public Set<Zamestnanec> getZamestnanci() {
@@ -68,7 +70,7 @@ public class Kurz implements Serializable{
 
     public void setHromadneZpravy(Set<HromadnaZprava> hromadneZpravy) {
         this.hromadneZpravy = hromadneZpravy;
-    }
+    } */
 
 
     

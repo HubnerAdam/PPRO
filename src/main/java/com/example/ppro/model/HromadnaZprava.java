@@ -29,6 +29,7 @@ public class HromadnaZprava implements Serializable{
 	@Column(name = "obsah")
 	private String obsah;
 	
+	/*
 	@ManyToOne
     @JoinColumn(name = "kurz_id")
     public Kurz getKurz() {
@@ -37,7 +38,7 @@ public class HromadnaZprava implements Serializable{
 
     public void setKurz(Kurz kurz) {
         this.kurz = kurz;
-    }
+    } */
 	
 	
 	

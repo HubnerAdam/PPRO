@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
  
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 public class Lektor implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private Set<Kurz> kurzy;
+	// private Set<Kurz> kurzy;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,13 +50,13 @@ public class Lektor implements Serializable{
 	@Column(name = "telefon")
 	private String telefon;
 	
-    @OneToMany(mappedBy = "lektor", cascade = CascadeType.ALL)
+   /* @OneToMany(mappedBy = "lektor", cascade = CascadeType.ALL)
     public Set<Kurz> getKurzy() {
         return kurzy;
     }
    public void setKurzy(Set<Kurz> kurzy) {
         this.kurzy = kurzy;
-    }
+    } */
  
 	protected Lektor() {
 	}
