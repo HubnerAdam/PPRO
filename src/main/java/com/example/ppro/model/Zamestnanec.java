@@ -3,12 +3,13 @@ package com.example.ppro.model;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
  
 @Entity
@@ -51,16 +52,14 @@ public class Zamestnanec implements Serializable{
 	@Column(name = "telefon")
 	private String telefon;
 	
-    @ManyToMany(mappedBy = "zamestnanci")
-	private Set<Kurz>kurzy;
-    public Set<Kurz> getKurzy() {
-        return kurzy;
+    @OneToMany(mappedBy = "kurz", cascade = CascadeType.ALL)
+	private Set<ZamestnanecHasKurz> zamestnanecHasKurzy;
+    public Set<ZamestnanecHasKurz> getZamestnanecHasKurzy() {
+        return zamestnanecHasKurzy;
     }
-
-    public void setKurzy(Set<Kurz> kurzy) {
-        this.kurzy = kurzy;
+    public void setZamestnanecHasKurzy(Set<ZamestnanecHasKurz> zamestnanecHasKurzy) {
+        this.zamestnanecHasKurzy = zamestnanecHasKurzy;
     }
- 
 	protected Zamestnanec() {
 	}
  
