@@ -16,7 +16,7 @@ public class WebController {
       
     @RequestMapping("/save")
     public String process(){
-        repository.save(new Zamestnanec("Josef", "Novák","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
+        repository.save(new Zamestnanec("Josef", "Novák","NovaJose", "Heslo123","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
 
         return "Done";
     }

@@ -1,28 +1,26 @@
 package com.example.ppro.model;
-
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
  
 @Entity
-@Table(name = "zamestnanec")
-public class Zamestnanec implements Serializable{
+@Table(name = "lektor")
+public class Lektor implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
-	private Set<Kurz>kurzy;
+	private Set<Kurz> kurzy;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	/*Jen zkouším GIT*/
 	
 	@Column(name = "jmeno")
 	private String jmeno;
@@ -51,19 +49,18 @@ public class Zamestnanec implements Serializable{
 	@Column(name = "telefon")
 	private String telefon;
 	
-    @ManyToMany(mappedBy = "publishers")
+    @OneToMany(mappedBy = "lektor", cascade = CascadeType.ALL)
     public Set<Kurz> getKurzy() {
         return kurzy;
     }
-
-    public void setKurzy(Set<Kurz> kurzy) {
+   public void setKurzy(Set<Kurz> kurzy) {
         this.kurzy = kurzy;
     }
  
-	protected Zamestnanec() {
+	protected Lektor() {
 	}
  
-	public Zamestnanec(String jmeno, String prijmeni, String login, String heslo, String ulice, String mesto, 
+	public Lektor(String jmeno, String prijmeni, String login, String heslo, String ulice, String mesto, 
 			String pozice, String email, String telefon
 			) {
 		this.jmeno = jmeno;
@@ -79,7 +76,7 @@ public class Zamestnanec implements Serializable{
  
 	@Override
 	public String toString() {
-		return String.format("Zamestnanec[idZamestnanec=%d, jmeno='%s', prijmeni='%s','login=%s', 'heslo=%s', ulice='%s',"
+		return String.format("Zamestnanec[id=%d, jmeno='%s', prijmeni='%s','login=%s', 'heslo=%s', ulice='%s',"
 				+ "mesto='%s',pozice='%s',email='%s',telefon='%s',]", id, jmeno, prijmeni, login, heslo,
 				ulice, mesto, pozice, email, telefon);
 	}
