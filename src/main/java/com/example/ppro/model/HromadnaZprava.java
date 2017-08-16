@@ -17,7 +17,7 @@ public class HromadnaZprava implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private Kurz kurz;
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,6 +32,7 @@ public class HromadnaZprava implements Serializable{
 	/*
 	@ManyToOne
     @JoinColumn(name = "kurz_id")
+	private Kurz kurz;
     public Kurz getKurz() {
         return kurz;
     }
