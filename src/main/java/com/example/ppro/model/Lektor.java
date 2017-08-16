@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class Lektor implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private Set<Kurz> kurzy;
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,8 +48,10 @@ public class Lektor implements Serializable{
 	
 	@Column(name = "telefon")
 	private String telefon;
-	
+
+
     @OneToMany(mappedBy = "lektor", cascade = CascadeType.ALL)
+    private Set<Kurz> kurzy;
     public Set<Kurz> getKurzy() {
         return kurzy;
     }
@@ -59,7 +61,7 @@ public class Lektor implements Serializable{
  
 	protected Lektor() {
 	}
- 
+
 	public Lektor(String jmeno, String prijmeni, String login, String heslo, String ulice, String mesto, 
 			String pozice, String email, String telefon
 			) {

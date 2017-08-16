@@ -17,7 +17,7 @@ public class Zamestnanec implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Set<Kurz>kurzy;
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,7 +51,8 @@ public class Zamestnanec implements Serializable{
 	@Column(name = "telefon")
 	private String telefon;
 	
-    @ManyToMany(mappedBy = "publishers")
+    @ManyToMany(mappedBy = "zamestnanci")
+	private Set<Kurz>kurzy;
     public Set<Kurz> getKurzy() {
         return kurzy;
     }
