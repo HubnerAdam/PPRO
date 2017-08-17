@@ -37,7 +37,7 @@ public class Kurz implements Serializable{
 	String currentTime = sdf.format(dt);*/
 	
 	@Column(name = "cas")
-	private int cas;
+	private String cas;
 	
 	@ManyToOne
     @JoinColumn(name = "idLektor")
@@ -68,6 +68,30 @@ public class Kurz implements Serializable{
     public void setHromadneZpravy(Set<HromadnaZprava> hromadneZpravy) {
         this.hromadneZpravy = hromadneZpravy;
     }
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getNazevKurzu() {
+		return nazevKurzu;
+	}
+	public void setNazevKurzu(String nazevKurzu) {
+		this.nazevKurzu = nazevKurzu;
+	}
+	public String getPopisKurzu() {
+		return popisKurzu;
+	}
+	public void setPopisKurzu(String popisKurzu) {
+		this.popisKurzu = popisKurzu;
+	}
+	public String getCas() {
+		return cas;
+	}
+	public void setCas(String cas) {
+		this.cas = cas;
+	}
 
 
     

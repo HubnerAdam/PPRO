@@ -39,7 +39,31 @@ public class HromadnaZprava implements Serializable{
 
     public void setKurz(Kurz kurz) {
         this.kurz = kurz;
-    } 
+    }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getPredmet() {
+		return predmet;
+	}
+
+	public void setPredmet(String predmet) {
+		this.predmet = predmet;
+	}
+
+	public String getObsah() {
+		return obsah;
+	}
+
+	public void setObsah(String obsah) {
+		this.obsah = obsah;
+	} 
 	
 	
 	

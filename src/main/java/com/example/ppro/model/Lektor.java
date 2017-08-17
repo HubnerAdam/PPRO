@@ -82,6 +82,68 @@ public class Lektor implements Serializable{
 				+ "mesto='%s',pozice='%s',email='%s',telefon='%s',]", id, jmeno, prijmeni, login, heslo,
 				ulice, mesto, pozice, email, telefon);
 	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getJmeno() {
+		return jmeno;
+	}
+	public void setJmeno(String jmeno) {
+		this.jmeno = jmeno;
+	}
+	public String getPrijmeni() {
+		return prijmeni;
+	}
+	public void setPrijmeni(String prijmeni) {
+		this.prijmeni = prijmeni;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getHeslo() {
+		return heslo;
+	}
+	public void setHeslo(String heslo) {
+		this.heslo = heslo;
+	}
+	public String getUlice() {
+		return ulice;
+	}
+	public void setUlice(String ulice) {
+		this.ulice = ulice;
+	}
+	public String getMesto() {
+		return mesto;
+	}
+	public void setMesto(String mesto) {
+		this.mesto = mesto;
+	}
+	public String getPozice() {
+		return pozice;
+	}
+	public void setPozice(String pozice) {
+		this.pozice = pozice;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getTelefon() {
+		return telefon;
+	}
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
+	}
+	
+	
 	
 	
 }

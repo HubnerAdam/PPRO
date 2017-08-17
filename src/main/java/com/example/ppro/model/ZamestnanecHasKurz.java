@@ -40,7 +40,13 @@ public class ZamestnanecHasKurz implements Serializable{
     }
     public void setZamestnanec(Zamestnanec zamestnanec) {
         this.zamestnanec = zamestnanec;
-    } 
+    }
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	} 
 	
 	
 	
