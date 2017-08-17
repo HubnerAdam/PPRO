@@ -24,7 +24,9 @@ public class ZamestnanecService {
 		return zamestnanci;
 	}
 	
-	
+	public void deleteZamestnanec(long id) {
+		zamestnanecRepository.delete(id);
+	}
 	
 	
 }

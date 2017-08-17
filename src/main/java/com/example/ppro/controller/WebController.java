@@ -24,6 +24,7 @@ public class WebController {
     @RequestMapping("/save")
     public String process(){
         repository.save(new Zamestnanec("Josef", "Novák","NovaJose", "Heslo123","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
+        repository.save(new Zamestnanec("Karel", "Novák","NovaKare", "Heslo123","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
 
         return "Done";
     }
@@ -62,6 +63,12 @@ public class WebController {
     public Collection<Zamestnanec> getAllZamestnanci(){
     	return zamestnanecService.findAllZamestnanci();
     }
+    
+    @GetMapping("/deleteZamestnanec")
+    public void deleteZamestnanec(@RequestParam long id) {
+    	zamestnanecService.deleteZamestnanec(id);
+    }
+    
     
     
 }
