@@ -56,14 +56,16 @@ public class WebController {
     
     @Autowired
     ZamestnanecHasKurzService zamestnanecHasKurzService;
-      
+    
+    
+    /*
     @RequestMapping("/save")
     public String process(){
         zamestnanecRepository.save(new Zamestnanec("Josef", "Novák","NovaJose", "Heslo123","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
         zamestnanecRepository.save(new Zamestnanec("Karel", "Novák","NovaKare", "Heslo123","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
 
         return "Done";
-    }
+    } */
       /* Comment*/
       
     @RequestMapping("/findall")
@@ -99,11 +101,11 @@ public class WebController {
     public Collection<Zamestnanec> getAllZamestnanci(){
     	return zamestnanecService.findAllZamestnanci();
     }
-    
+    /*
     @GetMapping("/deleteZamestnanec")
     public void deleteZamestnanec(@RequestParam long id) {
     	zamestnanecService.deleteZamestnanec(id);
-    }
+    }*/
     
     @GetMapping("/findAllLektori")
     public Collection<Lektor> getAllLektori(){
