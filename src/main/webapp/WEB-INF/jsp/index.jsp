@@ -41,6 +41,7 @@
 			        <th>Email</th>
 			        <th>Telefon</th>
 			        <th>Upravit</th>
+			        <th>Vymazat</th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -65,9 +66,11 @@
 			  </table>
 		</c:when>
 		
-		<c:when test ="${mode == 'ZAMESTNANEC_EDIT' || mode == 'ZAMESTNANEC_NEW'}">
+		<c:when test ="${mode == 'ZAMESTNANEC_EDIT'}">
 			<form action="save" method="GET">
-			<input type="hidden" class="form-control" value="${zamestnanec.id}" name="id" id="id">
+
+				<input type="hidden" class="form-control" value="${zamestnanec.id}" name="id" id="id">
+			
 			  <div class="form-group">
 			    <label for="jmeno">Jméno:</label>
 			    <input type="text" class="form-control" value="${zamestnanec.jmeno}" name="jmeno" id="jmeno">
@@ -105,8 +108,52 @@
 			    <input type="text" class="form-control" value="${zamestnanec.telefon}" name="telefon" id="telefon">
 			  </div>
 			  <button type="submit" class="btn btn-default">Submit</button>
-			</form>
+			</form>		
+		</c:when>
+		
+		<c:when test ="${mode == 'ZAMESTNANEC_NEW'}">
+			<form action="save" method="GET">
+
+				<input type="hidden" class="form-control" value="0" name="id" id="id">
 			
+			  <div class="form-group">
+			    <label for="jmeno">Jméno:</label>
+			    <input type="text" class="form-control" value="${zamestnanec.jmeno}" name="jmeno" id="jmeno">
+			  </div>
+			  <div class="form-group">
+			    <label for="prijmeni">Příjmení</label>
+			    <input type="text" class="form-control" value="${zamestnanec.prijmeni}" name="prijmeni" id="prijmeni">
+			  </div>
+			  <div class="form-group">
+			    <label for="login">Login</label>
+			    <input type="text" class="form-control" value="${zamestnanec.login}" name="login" id="login">
+			  </div>
+			  <div class="form-group">
+			    <label for="heslo">Heslo</label>
+			    <input type="text" class="form-control" value="${zamestnanec.heslo}" name="heslo" id="heslo">
+			  </div>
+			  <div class="form-group">
+			    <label for="ulice">Ulice</label>
+			    <input type="text" class="form-control" value="${zamestnanec.ulice}" name="ulice" id="ulice">
+			  </div>
+			  <div class="form-group">
+			    <label for="mesto">Město</label>
+			    <input type="text" class="form-control" value="${zamestnanec.mesto}" name="mesto" id="mesto">
+			  </div>
+			  <div class="form-group">
+			    <label for="pozice">Pozice</label>
+			    <input type="text" class="form-control" value="${zamestnanec.pozice}" name="pozice" id="pozice">
+			  </div>
+			  <div class="form-group">
+			    <label for="email">Email</label>
+			    <input type="text" class="form-control" value="${zamestnanec.email}" name="email" id="email">
+			  </div>
+			  <div class="form-group">
+			    <label for="telefon">Telefon</label>
+			    <input type="text" class="form-control" value="${zamestnanec.telefon}" name="telefon" id="telefon">
+			  </div>
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>		
 		</c:when>
 	</c:choose>
 
