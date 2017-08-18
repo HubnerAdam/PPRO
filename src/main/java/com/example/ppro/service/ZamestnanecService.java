@@ -24,9 +24,16 @@ public class ZamestnanecService {
 		return zamestnanci;
 	}
 	
-	public void deleteZamestnanec(long id) {
+	public void delete(long id) {
 		zamestnanecRepository.delete(id);
 	}
 	
+	public Zamestnanec findOne(long id) {
+		return zamestnanecRepository.findOne(id);
+	}
+	
+	public void save(Zamestnanec zamestnanec) {
+		zamestnanecRepository.save(zamestnanec);
+	}
 	
 }
