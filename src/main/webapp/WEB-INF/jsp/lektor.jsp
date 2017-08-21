@@ -15,10 +15,10 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/lektor">Lektoři</a>
+      <a class="navbar-brand" href="/prehledLektoru">Lektoři</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/lektor">Přehled lektorů</a></li>
+      <li class="active"><a href="/prehledLektoru">Přehled lektorů</a></li>
       <li><a href="/newLektor">Přidat lektora</a></li>
     </ul>
   </div>

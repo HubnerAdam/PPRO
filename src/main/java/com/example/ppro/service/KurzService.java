@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.ppro.model.Kurz;
+import com.example.ppro.model.Lektor;
 import com.example.ppro.repository.KurzRepository;
 
 @Service
@@ -24,7 +25,15 @@ public class KurzService {
 		return kurzy;
 	}
 	
-	public void deleteKurz(long id) {
+	public void delete(long id) {
 		kurzRepository.delete(id);
+	}
+	
+	public Kurz findOne(long id) {
+		return kurzRepository.findOne(id);
+	}
+	
+	public void save(Kurz kurz) {
+		kurzRepository.save(kurz);
 	}
 }

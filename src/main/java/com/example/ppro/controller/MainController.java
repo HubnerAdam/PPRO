@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.ppro.model.Kurz;
 import com.example.ppro.model.Lektor;
 import com.example.ppro.model.Zamestnanec;
+import com.example.ppro.service.KurzService;
 import com.example.ppro.service.LektorService;
 import com.example.ppro.service.ZamestnanecService;
 
@@ -25,6 +27,9 @@ public class MainController {
 	
 	@Autowired
 	private LektorService lektorService;
+	
+	@Autowired
+	private KurzService kurzService;
 	
 	@GetMapping(value = "/")
 	public String init(HttpServletRequest req){
@@ -100,6 +105,44 @@ public class MainController {
 	public void deleteLektor(@RequestParam long id, HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		lektorService.delete(id);
 		resp.sendRedirect("/prehledLektoru");
+	} 
+	
+	@GetMapping(value = "/prehledKurzu")
+	public String prehledKurzu(HttpServletRequest req){
+		req.setAttribute("kurzy", kurzService.findAllKurzy());
+		req.setAttribute("mode", "KURZ_VIEW");
+		return "kurz";
+	}
+	
+	//Nastaveni modu pro editaci kurzu
+	@GetMapping(value = "/updateKurz")
+	public String updateKurz(@RequestParam long id, HttpServletRequest req){
+		req.setAttribute("kurz", kurzService.findOne(id));
+		req.setAttribute("mode", "KURZ_EDIT");
+		return "kurz";
+	}
+	
+	//ulozeni zmeny, noveho vlozeni kurzu
+	@GetMapping (value = "/saveKurz")
+	public String saveKurz(@ModelAttribute Kurz kurz, HttpServletRequest req) {
+		kurzService.save(kurz);
+		req.setAttribute("kurzy", kurzService.findAllKurzy());
+		req.setAttribute("mode", "KURZ_VIEW");
+		return "kurz";
+	}
+	
+	//nastaveni modu pro noveho kurzu
+	@GetMapping (value = "/newKurz")
+	public String newKurz(HttpServletRequest req) {
+		req.setAttribute("mode", "KURZ_NEW");
+		return "kurz";
+	}
+	
+	//nastaveni modu pro smazani kurzu
+	@GetMapping (value = "/deleteKurz")
+	public void deleteKurz(@RequestParam long id, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		kurzService.delete(id);
+		resp.sendRedirect("/prehledKurzu");
 	} 
 	
 } 
