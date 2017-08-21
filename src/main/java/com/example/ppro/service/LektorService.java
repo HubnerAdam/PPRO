@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.ppro.model.Lektor;
+import com.example.ppro.model.Zamestnanec;
 import com.example.ppro.repository.LektorRepository;
 
 @Service
@@ -24,8 +25,16 @@ public class LektorService {
 		return lektori;
 	}
 	
-	public void deleteLektor(long id) {
+	public void delete(long id) {
 		lektorRepository.delete(id);
+	}
+	
+	public Lektor findOne(long id) {
+		return lektorRepository.findOne(id);
+	}
+	
+	public void save(Lektor lektor) {
+		lektorRepository.save(lektor);
 	}
 	
 	

@@ -73,6 +73,14 @@ public class WebController {
       /* Comment*/
 
       
+    @RequestMapping("/saveLek")
+    public String process(){
+        lektorRepository.save(new Lektor("Josef", "Novák","NovaJose", "Heslo123","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
+        lektorRepository.save(new Lektor("Karel", "Novák","NovaKare", "Heslo123","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
+
+        return "Done";
+    }
+    
     @RequestMapping("/findall")
     public String findAll(){
         String result = "<html>";
@@ -116,11 +124,11 @@ public class WebController {
     public Collection<Lektor> getAllLektori(){
     	return lektorService.findAllLektori();
     }
-    
+    /*
     @GetMapping("/deleteLektor")
     public void deleteLektor(@RequestParam long id) {
     	lektorService.deleteLektor(id);
-    }
+    }*/
     
     @GetMapping("/findAllKurzy")
     public Collection<Kurz> getAllKurzy(){
