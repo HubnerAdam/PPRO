@@ -145,4 +145,10 @@ public class MainController {
 		resp.sendRedirect("/prehledKurzu");
 	} 
 	
+	//nastaveni modu pro noveho zamestnance
+	@GetMapping (value = "/login")
+	public String login(HttpServletRequest req) {
+		return "login";
+	}
+	
 } 
