@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.ppro.model.Lektor;
 import com.example.ppro.model.Zamestnanec;
+import com.example.ppro.service.LektorService;
 import com.example.ppro.service.ZamestnanecService;
 
 @Controller
@@ -20,6 +22,9 @@ public class MainController {
 
 	@Autowired
 	private ZamestnanecService zamestnanecService;
+	
+	@Autowired
+	private LektorService lektorService;
 	
 	@GetMapping(value = "/")
 	public String init(HttpServletRequest req){
@@ -58,4 +63,43 @@ public class MainController {
 		zamestnanecService.delete(id);
 		resp.sendRedirect("/");
 	} 
+	
+	@GetMapping(value = "/prehledLektoru")
+	public String prehledLektoru(HttpServletRequest req){
+		req.setAttribute("lektori", lektorService.findAllLektori());
+		req.setAttribute("mode", "LEKTOR_VIEW");
+		return "lektor";
+	}
+	
+	//Nastaveni modu pro editaci zamestnance
+	@GetMapping(value = "/updateLektor")
+	public String updateLektor(@RequestParam long id, HttpServletRequest req){
+		req.setAttribute("lektor", lektorService.findOne(id));
+		req.setAttribute("mode", "LEKTOR_EDIT");
+		return "lektor";
+	}
+	
+	//ulozeni zmeny, noveho vlozeni zamestnance
+	@GetMapping (value = "/saveLektor")
+	public String saveLektor(@ModelAttribute Lektor lektor, HttpServletRequest req) {
+		lektorService.save(lektor);
+		req.setAttribute("lektori", lektorService.findAllLektori());
+		req.setAttribute("mode", "LEKTOR_VIEW");
+		return "lektor";
+	}
+	
+	//nastaveni modu pro noveho zamestnance
+	@GetMapping (value = "/newLektor")
+	public String newLektor(HttpServletRequest req) {
+		req.setAttribute("mode", "LEKTOR_NEW");
+		return "lektor";
+	}
+	
+	//nastaveni modu pro smazani zamestnance
+	@GetMapping (value = "/deleteLektor")
+	public void deleteLektor(@RequestParam long id, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		lektorService.delete(id);
+		resp.sendRedirect("/");
+	} 
+	
 } 
