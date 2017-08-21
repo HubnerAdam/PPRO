@@ -71,7 +71,7 @@ public class MainController {
 		return "lektor";
 	}
 	
-	//Nastaveni modu pro editaci zamestnance
+	//Nastaveni modu pro editaci lektora
 	@GetMapping(value = "/updateLektor")
 	public String updateLektor(@RequestParam long id, HttpServletRequest req){
 		req.setAttribute("lektor", lektorService.findOne(id));
@@ -79,7 +79,7 @@ public class MainController {
 		return "lektor";
 	}
 	
-	//ulozeni zmeny, noveho vlozeni zamestnance
+	//ulozeni zmeny, noveho vlozeni lektora
 	@GetMapping (value = "/saveLektor")
 	public String saveLektor(@ModelAttribute Lektor lektor, HttpServletRequest req) {
 		lektorService.save(lektor);
@@ -88,18 +88,18 @@ public class MainController {
 		return "lektor";
 	}
 	
-	//nastaveni modu pro noveho zamestnance
+	//nastaveni modu pro noveho lektora
 	@GetMapping (value = "/newLektor")
 	public String newLektor(HttpServletRequest req) {
 		req.setAttribute("mode", "LEKTOR_NEW");
 		return "lektor";
 	}
 	
-	//nastaveni modu pro smazani zamestnance
+	//nastaveni modu pro smazani lektora
 	@GetMapping (value = "/deleteLektor")
 	public void deleteLektor(@RequestParam long id, HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		lektorService.delete(id);
-		resp.sendRedirect("/");
+		resp.sendRedirect("/prehledLektoru");
 	} 
 	
 } 

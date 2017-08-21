@@ -67,7 +67,7 @@
 		</c:when>
 		
 		<c:when test ="${mode == 'LEKTOR_EDIT'}">
-			<form action="save" method="GET">
+			<form action="saveLektor" method="GET">
 
 				<input type="hidden" class="form-control" value="${lektor.id}" name="id" id="id">
 			
@@ -112,7 +112,7 @@
 		</c:when>
 		
 		<c:when test ="${mode == 'LEKTOR_NEW'}">
-			<form action="save" method="GET">
+			<form action="saveLektor" method="GET">
 
 				<input type="hidden" class="form-control" value="0" name="id" id="id">
 			
