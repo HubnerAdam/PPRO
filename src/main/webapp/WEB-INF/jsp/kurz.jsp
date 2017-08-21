@@ -31,19 +31,19 @@
 			    <thead>
 			      <tr>
 			      	<th>ID</th>
-			        <th>Název kurzu</th>
+	 			    <th>Název kurzu</th>
 			        <th>Popis kurzu</th>
 			        <th>Čas</th>
 			        <th>Kapacita</th>
 			        <th>Upravit</th>
-			        <th>Vymazat</th>
+			        <th>Vymazat</th>  
 			      </tr>
 			    </thead>
 			    <tbody>
 			       <c:forEach var="kurz" items="${kurzy}">
 			      <tr>
 			      		<td>${kurz.id}</td>
-			      		<td>${kurz.nazevKurzu}</td>
+			      		 <td>${kurz.nazevKurzu}</td>
 			      		<td>${kurz.popisKurzu}</td>
 			      		<td>${kurz.cas}</td>
 			      		<td>${kurz.kapacita}</td>
