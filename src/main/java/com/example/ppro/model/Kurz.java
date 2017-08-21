@@ -42,7 +42,6 @@ public class Kurz implements Serializable{
 	@Column(name = "kapacita")
 	private int kapacita;
 
-
 	@ManyToOne
     @JoinColumn(name = "idLektor")
 	private Lektor lektor;

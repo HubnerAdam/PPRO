@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
  
@@ -82,6 +84,15 @@ public class Lektor implements Serializable{
 				+ "mesto='%s',pozice='%s',email='%s',telefon='%s',]", id, jmeno, prijmeni, login, heslo,
 				ulice, mesto, pozice, email, telefon);
 	}
+	@ManyToOne
+    @JoinColumn(name = "userid")
+	private User user;
+    public User getUser() {
+        return user;
+	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 	public long getId() {
 		return id;
 	}
@@ -142,6 +153,7 @@ public class Lektor implements Serializable{
 	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
+
 	
 	
 	

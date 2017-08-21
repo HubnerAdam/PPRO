@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
  
@@ -60,6 +62,16 @@ public class Zamestnanec implements Serializable{
     public void setZamestnanecHasKurzy(Set<ZamestnanecHasKurz> zamestnanecHasKurzy) {
         this.zamestnanecHasKurzy = zamestnanecHasKurzy;
     }
+	@ManyToOne
+    @JoinColumn(name = "userid")
+	private User user;
+    public User getUser() {
+        return user;
+	}
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
 	protected Zamestnanec() {
 	}
  
