@@ -39,6 +39,10 @@ public class Kurz implements Serializable{
 	@Column(name = "cas")
 	private String cas;
 	
+	@Column(name = "kapacita")
+	private int kapacita;
+
+
 	@ManyToOne
     @JoinColumn(name = "idLektor")
 	private Lektor lektor;
@@ -68,6 +72,19 @@ public class Kurz implements Serializable{
     public void setHromadneZpravy(Set<HromadnaZprava> hromadneZpravy) {
         this.hromadneZpravy = hromadneZpravy;
     }
+    
+	protected Kurz() {
+	}
+    
+    public Kurz(String nazevKurzu, String popisKurzu, String cas, int kapacita
+			) {
+		this.nazevKurzu = nazevKurzu;
+		this.popisKurzu = popisKurzu;
+		this.cas = cas;
+		this.kapacita = kapacita;
+	}
+    
+    
 	public long getId() {
 		return id;
 	}
@@ -91,6 +108,13 @@ public class Kurz implements Serializable{
 	}
 	public void setCas(String cas) {
 		this.cas = cas;
+	}
+	
+	public int getKapacita() {
+		return kapacita;
+	}
+	public void setKapacita(int kapacita) {
+		this.kapacita = kapacita;
 	}
 
 

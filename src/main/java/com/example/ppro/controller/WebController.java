@@ -73,10 +73,10 @@ public class WebController {
       /* Comment*/
 
       
-    @RequestMapping("/saveLek")
+    @RequestMapping("/saveK")
     public String process(){
-        lektorRepository.save(new Lektor("Josef", "Novák","NovaJose", "Heslo123","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
-        lektorRepository.save(new Lektor("Karel", "Novák","NovaKare", "Heslo123","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
+        kurzRepository.save(new Kurz("PPRO", "Práce v Spring","Úterý 19:00", 30));
+        //lektorRepository.save(new Lektor("Karel", "Novák","NovaKare", "Heslo123","Na Valech","Jaroměř", "Mistr", "p.nov@seznam.cz", "728645521"));
 
         return "Done";
     }
@@ -135,10 +135,10 @@ public class WebController {
     	return kurzService.findAllKurzy();
     }
     
-    @GetMapping("/deleteKurz")
+   /* @GetMapping("/deleteKurz")
     public void deleteKurz(@RequestParam long id) {
     	kurzService.deleteKurz(id);
-    }
+    }*/
     @GetMapping("/findAllHromadneZpravy")
     public Collection<HromadnaZprava> getAllHromadneZpravy(){
     	return hromadnaZpravaService.findAllHromadneZpravy();
