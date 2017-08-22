@@ -2,25 +2,33 @@ package com.example.ppro.controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.ppro.model.Kurz;
 import com.example.ppro.model.Lektor;
 import com.example.ppro.model.Zamestnanec;
+import com.example.ppro.repository.ZamestnanecRepository;
 import com.example.ppro.service.KurzService;
 import com.example.ppro.service.LektorService;
+import com.example.ppro.service.NotificationService;
 import com.example.ppro.service.ZamestnanecService;
+
+
 
 @Controller
 public class MainController {
+	
 
 	@Autowired
 	private ZamestnanecService zamestnanecService;
@@ -30,6 +38,12 @@ public class MainController {
 	
 	@Autowired
 	private KurzService kurzService;
+	
+	@Autowired
+	private NotificationService notificationService;
+	
+    @Autowired
+    ZamestnanecRepository zamestnanecRepository; 
 	
 	@GetMapping(value = "/")
 	public String init(HttpServletRequest req){
@@ -149,6 +163,17 @@ public class MainController {
 	@GetMapping (value = "/login")
 	public String login(HttpServletRequest req) {
 		return "login";
+	}
+	
+	@RequestMapping (value = "/sendMail")
+	public String sendMail(HttpServletRequest req) {
+		Zamestnanec zamestnanec = zamestnanecRepository.save(new Zamestnanec("Josef", "Novák","NovaJose", "Heslo123","Na Valech","Jaroměř", "Mistr", "kabelac.ondrej@gmail.com", "728645521"));	
+		try {
+			notificationService.sendNotification(zamestnanec);
+		} catch (MailException e){
+			
+		}
+		return "index";
 	}
 	
 } 

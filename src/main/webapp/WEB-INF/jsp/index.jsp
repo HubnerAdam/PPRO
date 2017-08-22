@@ -114,7 +114,7 @@
 		<c:when test ="${mode == 'ZAMESTNANEC_NEW'}">
 			<form action="save" method="GET">
 
-				<input type="hidden" class="form-control" value="0" name="id" id="id">
+<!-- 				<input type="hidden" class="form-control" value="0" name="id" id="id"> -->
 			
 			  <div class="form-group">
 			    <label for="jmeno">Jméno:</label>
