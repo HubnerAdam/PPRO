@@ -2,9 +2,12 @@ package com.example.ppro.model;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
@@ -14,17 +17,17 @@ public class CustomUserDetails extends User implements UserDetails {
 	private List<String> userRoles;
 	
 
-	public CustomUserDetails(User user,List<String> userRoles){
+	public CustomUserDetails(User user){
 		super(user);
-		this.userRoles=userRoles;
 	}
 	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		
-		String roles=StringUtils.collectionToCommaDelimitedString(userRoles);			
-		return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
+		return getRoles()
+				.stream()
+				.map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -45,8 +48,11 @@ public class CustomUserDetails extends User implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-
-
+	@Override
+	public String getPassword() {
+		return super.getPassword();
+	}
+	
 	@Override
 	public String getUsername() {
 		return super.getUserName();

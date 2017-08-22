@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -83,6 +84,7 @@ public class MainController {
 		resp.sendRedirect("/");
 	} 
 	
+	@PreAuthorize("HasAnyRole('ADMIN')")
 	@GetMapping(value = "/prehledLektoru")
 	public String prehledLektoru(HttpServletRequest req){
 		req.setAttribute("lektori", lektorService.findAllLektori());
@@ -160,10 +162,10 @@ public class MainController {
 	} 
 	
 	//nastaveni modu pro noveho zamestnance
-	@GetMapping (value = "/login")
+	/*@GetMapping (value = "/login")
 	public String login(HttpServletRequest req) {
 		return "login";
-	}
+	}*/
 	
 	@RequestMapping (value = "/sendMail")
 	public String sendMail(HttpServletRequest req) {

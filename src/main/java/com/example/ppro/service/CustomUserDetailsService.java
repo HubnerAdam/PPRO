@@ -1,6 +1,7 @@
 package com.example.ppro.service;
 
-import java.util.List;
+
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,12 +12,11 @@ import org.springframework.stereotype.Service;
 import com.example.ppro.model.CustomUserDetails;
 import com.example.ppro.model.User;
 import com.example.ppro.repository.UserRepository;
-import com.example.ppro.repository.UserRoleRepository;
 
 
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService{
-	private final UserRepository userRepository;
+	/*	private final UserRepository userRepository;
 	private final UserRoleRepository userRoleRepository;
 	
 	@Autowired
@@ -24,17 +24,18 @@ public class CustomUserDetailsService implements UserDetailsService{
         this.userRepository = userRepository;
         this.userRoleRepository=userRoleRepository;
     }
-	
+	*/
+	@Autowired
+	private UserRepository userRepository;
         
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user=userRepository.findByUserName(username);
-		if(null == user){
-			throw new UsernameNotFoundException("No user present with username: "+username);
-		}else{
-			List<String> userRole=userRoleRepository.findRoleByUserName(username);
-			return new CustomUserDetails(user,userRole);
-		}
+		Optional<User> optionalUser = userRepository.findByUserName(username);
+			
+		optionalUser.orElseThrow(() -> new UsernameNotFoundException("Uživatel nenalezen"));
+		return optionalUser.map(CustomUserDetails::new).get();
+				
+		
 	}
 		
 }

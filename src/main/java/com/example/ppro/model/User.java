@@ -12,7 +12,7 @@ public class User implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)    
-    @Column(name="userid")
+    @Column(name="user_id")
     private Long userId;
 
 	@Column(name = "username")
@@ -27,7 +27,19 @@ public class User implements Serializable {
 	@Column(name ="enabled")
 	private int enabled;
 	
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@JoinTable(name = "user_role", 
+			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "role_id"))
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<Role> roles;
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Lektor> lektori;
     public Set<Lektor> getLektori() {
         return lektori;
@@ -53,7 +65,10 @@ public class User implements Serializable {
 	        this.userName = user.userName;
 	        this.email = user.email;       
 	        this.password = user.password;
-	        this.enabled=user.enabled;        
+	        this.enabled=user.enabled;    
+	        this.roles = user.roles;
+	        this.zamestnanci = user.zamestnanci;
+	        this.lektori = user.lektori;
 	}
 	
 	public User(Zamestnanec zamestnanec) {
